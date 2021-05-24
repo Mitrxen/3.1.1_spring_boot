@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+    
+	<style type="text/css">
+	    body{text-align: center;}
+    	div a{font-size: 30px;}
+    	form{width: auto; text-align: center; margin: auto; font-size: 30px;}
+    	input{font-size: 20px;}
+    	#is_admin{transform:scale(2.0);}
+    </style>
+</head>
+<body>
+<h1>Edit User</h1>
+<div>
+    <form th:method="PATCH" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}">
+		
+		<p>
+			<label for="name">Name: </label>
+			<input type="text" th:field="*{name}" id="name" />
+		</p>
+		<p>
+			<label for="last_name">Lastname: </label>
+			<input type="text" th:field="*{lastName}" id="last_name" />
+		</p>
+		<p>
+			<label for="password">Password: </label>
+			<input type="text" th:field="*{password}" id="password" />
+		</p>
+		<p style="pointer-events: none;">
+			<label for="is_admin">Admin: </label>
+			<input type="checkbox" name="is_admin" id="is_admin" th:checked="${isAdmin}" onclick="return false;"/>
+		</p>
+		<input type="submit" value="submit">
+	</form>
+<br />
+<hr />
+<a href="/admin/users">User List</a>
+<br />
+<br />
+<a href="/logout">Logout</a>
+</div>
+</body>
+</html>
